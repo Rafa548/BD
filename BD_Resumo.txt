@@ -1,0 +1,322 @@
+Base de dados->coleçai organizada de dados que estão relacionados e que podem ser partilhados por multiplas aplicações
+
+No inicio ||||||
+
+1->Processamento aplicacional de dados (dados isolados podendo ser replicados noutras aplicaçoes diferentes organizaçoes e formatos) |Problemas de sincronismo e incoerencia|
+
+2->Sistema partilhado dde ficheiros (dados organizados em ficheiros partilhados cada app cria a sua propria interface) |problemas de integridade e segurança|
+
+3->Base de dados
+
+Para resolver estes problemas criou-se (Sistema de gestao de base de dados (SGBD) )
+
+O mesmo media o acesso á base de dados fornecendo uma interface de acesso que esconde detalhes sobre o armazenamento fisico dos dados que estao integrados na mesma unidade de armazenamento (suporta mais de uma base de dados)
+
+Facilita -> definição
+		manipulação
+		construção
+		partilha
+		
+Obtem-se -> independencia (entre programs e dados)
+		integridade (controlo da alteraçao dos dados de acordo com regras definidas)
+		consistencia (nas transaçoes e mesmo em falhas)
+		eficiencia	(manipulaçao de grandes quantidades de dados)
+		isolamento	(utilizadores "sentem" que estao sozinhos nas interaçoes)
+		segurança 	(controlo de acessos e codificaçao de dados)
+		fiabilidade	(mecanismos de backup e recuperaçao de dados)
+		facilidade (linguagem de desenho e manipulaçao de dados)
+
+Desvantagens -> + custos, + complexidade
+		   nao permite pesquisa por text
+		   centralidade aumenta vulnerabilidade e dificulta escabilidade
+
+
+Esquema de SGBD (Slide 6 pdf 1)
+
+Users -> Programs and queries -> software de processamento dos pedidos->software de acesso dos dados -> storage metadata
+(melhor ver desenho do slide)
+
+Utilizadores
+
+Finais (acedem atraves de ferramentass do fabricante)
+Programadores (desenvolvem aplicaçoes para que os utilizadores interajam com a bd)
+Administradores (gerem a base de dados garantindo o seu correto funcionamento)
+
+Metadados
+
+Informaçao relativa á descriçao da base de daods incluindo as restriçoes
+(descreve objetos, contem info sobre dados em uso e por quem (locks) e diagramas e mapeamento)
+
+Interfaces
+
+Web ou form-based,GUI,natural query language ou SGBD command line (linguagem sql)
+
+Arquitetura Ansi/Sparc
+
+Diagrama (+-)
+
+BD -> esq interno -> esq conceptual ->view 1		(mais abaixo pensar nisto ao contrario)
+						->view 2  
+
+nivel interno (implementaçao fisica da base de dados) programadores de BD (estrutura de registos,indexaçao e ordenaçao)
+nivel conceptual (descreve estrutura da BD para os utilizadores) administrador e programadores de apps (entidades,relaçoes,tipo de dados,restriçoes)
+nivel externo (vista da Bd adaptada ao utilizador) (utilizadores e prog apps) (apresentaçao trabalhada dos dados cujo acesso pode ser parcial)
+
+Importante lembrar
+
+Alteraçao do esquema de um nivel nao tem impacto nos esquemas acima 
+Alteraçao do nivel fisico nao devem ter impacto no esquema conceptual (exemplo-> podemos alterar a forma como se armazena os dados por razoes de desempenho)
+Alteraçao no esquema conceptual (nivel logico) nao devem ter impacto nos esquemas externos ou nas apps ja desenvolvidas
+
+
+Modelos de Base de Dados
+
+||||||| 1 Geraçao ||||||||
+
+Modelo hierarquico (estrutura em arvore registos ligados por ponteiros uma ligaçao pai e filho cada pai esta ligado a n filhos)
+
+-acesso sequencial (passa sempre pela raiz mesmo q seja desnecessario)
+-redundancia
+-restriçoes de integridade (eliminar pai implica eliminar filho)
+-sem relaçoes N:M (implica duplicaçao de dados)
+
+Modelo de Rede (descende do hierarquico permite 1 registo em varias associaçoes)
+
+-estrutura de grafos
+-melhor navegaçao
+-relacoes entre registos do mesmo tipo
+-relaçao 1:n entre dois tipos de registo
+
+|||||| 2 Geraçao ||||||||
+
+Modelo Relacional (informaçao armazenada em tabelas bidimensionais)
+
+-toda a informaçao relativa a um determinado tipo é armazenada numa linha da tabela por isso designado relacional
+
+||||| 3 geraçao |||||
+
+....
+
+/////////////////////////////////////////////--------------///////////////////////////////////////
+
+
+Capitulo 2
+
+Modelo Entidade-Relacionamento (ER)
+
+Entidades (Algo que existe (Pessoa, Carro etc..))
+	Fortes-> (independentes)	(retangulo normal)
+	Fracas-> (dependem de outras identidades) (duplo retangulo)
+Atributos (Propriedades das entidades)
+	Derivados -> calculado (ex: idade)
+	Multivalor -> mais que um valor em um (ex: acçoes_formaçao)
+	Compostos -> atributo com atributos (ex: morada tem rua,cod_postal etc...)
+Relacionamento (Relaçao entre uma ou mais identidades) (Podem ter atributos)
+	Grau (numero de identidades no relacionamento)
+		->Unário
+		->Binário
+		->Ternário
+	Multiplos (mais de um relacionamento ex: funcionario (trabalha) em cidade, (reside) em cidade)
+	Recursivos (relacionamento pode ter mais de uma role ex: pessoa tem pai/filho (o filho tem pai mas o pai tbm tem filho))
+	Cardinalidade (1:N ex: um departamento tem n funcionarios)
+	Obrigatoriade (tem a forma (min,max) min=quer dizer que é opcional,min = 1 obrigatorio, N ou M quer dizer q pode ter varios)
+	Agregaçao (tornar uma relaçao em uma entidade associativa pode ser feito ao criar uma entidade com a relaçao ou permanecer uma relaçao mas com atributos)
+	Especializaçao (is-a) (overlaping) (pode ser disjoint (ex: pessoa,professor,estudante ao ser disjoint uma pessoa só pode ser estudante ou professor nunca os dois ao mesmo tempo) ou sobreposta (nao se mete nada e uma pessoa pode ser ambos))
+				    (covering) (pode ser total (ex dois traços na pessoa quer dizer que uma pessoa é obrigatoriamento ou estudante ou professor) ou parcial linha normal pode nao ser nenhuma das duas)
+
+
+////////////////////////////////////////////---------------------------////////////////////////////////
+
+Capitulo 3
+
+Modelo Relacional (DER)
+
+base->teoria matematica dos conjuntos
+    ->noçao de (relaçao |) representada por tabelas 
+				>manipulada por algebra relacional
+
+Conceitos
+	relaçao->tabela-> tuplos (linhas) Cardinalidade da relaçao			
+				atributos (colunas) Grau da relaçao			(pensar numa tabela com Nmec, nome, curso  neste caso vamos ter grau 3 a cardinalidade vai depender da quantidade de tuplos (linhas) valor é cada atributo)
+				valor (celula)						
+	
+	atributo->especifica o tipo de dados a armazenar
+
+	dominio->tipo de dados e gama de valor
+	
+	esquema da relaçao vai ser o nomedatabela(atributo1,*2,*3)
+
+	tuplos -> devem ser distintos
+	
+	atomicidade-> valor de atributo é atomico ou seja nao pode ser miltivalor/composto
+	
+	esquema da BD-> conjunto de todos os esquemas da relaçao da BD
+
+
+Chaves
+	superChave
+	
+	Chave candidata -> todas as chaves que podem servir como identificaçao unica
+	Chave primaria -> A mais certa das candidatas (pode ser mais que uma)
+	Chave unica -> candidatas que nao foram escolhidas como primarias
+	Chave estrangeira -> chaves primarias de uma entidade diferente que sao usadas na entidade atual
+
+
+restriçoes de integridade
+
+	Dominio dos atributos-> os valores devem obdecer aos tipos de dados e ao valores admitidos
+	entidade ->cada tuplo deve ser identificado por uma chave primaria unica (not null)
+	referencial -> chave estrangeira é null ou chave primaria da relaçao importada
+
+
+Regras de Codd /////////Fazer dps
+
+
+
+////////////////////////////////////////////////////////////-------------------------////////////////////////////////////////////////////////////77
+
+Capitulo 4
+
+Intro
+
+Structered Query Language (Orientada ao processamento de conjuntos)
+	Sublinguagens->   DDL (Data Defenition Language)
+ 				DML (Data Manipulation language) 
+				DCL (Data control language)
+	
+	Hierarquia-> catálogo->esquema->tabela->coluna
+
+	Linguagem-> ; Fim de todas as instruçoes
+		      -- comenta uma linha			(kinda useless para o teorico)
+			/* ... */ comenta um bloco	
+
+DDL (usado ao criar/apagar BD ou schemas ou tables)
+
+restriçoes de integridade
+
+	Check (impor regra)
+	not null
+	primary key			(self-explanatory)
+	unique
+	foreign key 
+
+Podem ser de:
+	coluna->refere-se apenas á coluna e aparece á frente da mesma 			(basicamente no caso de primary keys por exemplo se for mais que uma usar a debaixo caso contrario nao faz diferença) (resto é igual)
+	tabela->mais que uma coluna fica separada da definiçao das colunas 		(pensar no que foi feito nos guioes (tabela) a de coluna era meter á frente do tipo de dados)
+
+Integridade referencial
+	quando um tuplo ao qual uma chave estrangeira é alterado pode haver uma violaçao,que pode ser prevista nas restriçoes
+	
+	Açoes
+	on delete		
+	on update
+			Opçoes
+			->restrict (nao existe em mysql mas o mesmo faz essa açao por default (nao deve efetuar a operaçao) )
+			->cascade (apaga ou altera a chave estrangeira)
+			->set null	(chave estrangeira passa a null)
+			->set default (chave estrangeira passa a ter o valor por omissao)
+
+Atribuiçao de nome (alterar mais tarde uma restriçao)
+	Constraint <name> <restriction>
+
+Remover Tabela
+	Drop Table <name> ([Cascade])->nao exite em mysql
+	caso ocorram violaçoes da integridade referencial a op é rejeitada
+	o cascade faz a remoçao ser forçada elemindando tbm os elementos referenciados na restriçao
+
+Ediçoes em tabelas 
+	
+	Alter Table <name> Add <S1> <D1>  (adiciona atributo ficando os tublos existentes a valor null)
+	Alter Table <name> Add Constraint <name> <rest> (adiciona restriçao á tabela)
+	Alter Table <name> Drop Column <atribute> (elimina coluna)
+	etc...
+
+Dml (usa-se para inserir os dados nas tabelas)
+	
+	Insert into <tablename> Values (<data1>,<data2>,<data3>,...) |(inserir um tuplo á tabela)|					(maior detalhe no cap 6)
+	Insert into <tablename> (<atb1>,<atb2>) values (...) |(adiciona tuplo com determinados atributos apenas)|
+	
+	
+////////////////////////////////////////////////-----------------------------------///////////////////////////////////////
+
+Seleçao (σ)
+	permite selecionar as linhas q satisfazem a condiçao
+	exemplo : σ (Dno=4) (Employee)
+	pode ter varios operadores (=, >=, <, /= etc..)
+	e condiçoes and, or , not (não esquecer de parenteses)
+	para a mesma ser mais complexa
+	
+Projeçao (π)
+	Cria uma nova tabela com os atributos desejados (duplicados sao removidos)
+	exemplo π Fname,Lname,Salary (Employee)
+
+
+Renomeação (ρ) ou (←)
+	Nos anteriores podemos usar uma seta (←) exemplo: TEMP ← σ Dno=5(EMPLOYEE) (isto seleciona os tuplo com Dno=5 e renomeia a nova tabela como TEMP)
+									  R(First_name, Last_name, Salary) ← π Fname, Lname, Salary(TEMP) (isto cria uma nova tabela Temp apenas com Fname, 										  Lname, Salary) e renomeia o nome das meio e nome dos seus atributos
+	
+	Temos tambem a operaçao renomear como ρR2(B1, B2, ..., Bn) (R1) ou ρR2 (R1) ou ρ(B1, B2, ..., Bn) (R1) (respetivamente (tabela+atributos),(tabela),(atributos))
+
+União (∪)
+	Para acontecer (as tabelas têm de ser compativeis (mesmo numero de atributos (colunas) e dominios compativeis (tipos)))**** 
+	Simplesmente une as tabelas eliminando tuplos (linhas) repetidos
+	
+Intersecção (∩)
+	Para acontecer **** (em cima)
+	Interceçao das tabelas ficam os tuplos iguais (sem repetidos)
+
+Diferença (-)
+	Para acontecer **** (em cima)
+	Exemplo: R-S (isto tem como resultado todos os tuplos de R que nao existem em S)
+	
+Produto cartesiano (Cross Join) (X)
+	Cria uma nova tabela onde cruza todos os tuplos da primeira tabela com todos os tuplos da segunda
+
+Join (⋈)
+	Juntar duas tabelas (normalmente usa-se uma condiçao a dizer os atributos iguais ou renomeia-se numa das tabelas para ficarem com o mesmo nome)
+	Exemplo:1-> DEPARTMENT ⋈ Mgr_ssn=Ssn EMPLOYEE (neste temos o mesmo atributo "duplicado")
+		  2-> PROJECT ⋈ ρ(Dname, Dnum, Mgr_ssn, Mgr_start_date) (DEPARTMENT) (aqui evitamos ter duas colunas com a mesma informaçao)
+
+Divisao (÷)
+	A(1,2) ÷ B(2) (Procura em A todos os 1 que têm todos os elemtemtos de B) (ficou um pouco confuso)
+	Exemplo: Pensar num Tabela Department(Dno,Name,Location) ÷ Location(Location) o resultado disto será todos os departamentos que têm todas as locations da tabble locations
+
+Outer Join
+	Faz aparecer linhas com nulls (ou seja tabelas nao tinham relaçao naquelas linhas)
+	Nulls aparecem na direçao contraria ao Nome ou seja, Right Outer Join (nulls na tabela da esquerda) etc..
+	Full Outer Join (aparecem todos)
+
+Agregation (ℑ) (simbolo not very good)
+	tem como funçoes -> avg,min,max,sum,count
+	exemplo: π Dno, Avg_Salary=avg(Salary) (EMPLOYEE) (isto cria uma nova tabela com Dno e o Avg_Salary para cada dept)
+		ou Sexo ℑ Avg(Salario) (Pagamentos) (cria uma tabela com o Sexo e o Salario_Avg para cada pagamento)
+
+
+Cap 6
+
+Ordem das cenas
+
+Select
+From
+Where
+Group by 
+Having
+
+
+
+
+Geral cenas que nao existem em mysql
+
+Boolean
+Domain
+Divisão
+Unique (com where)
+Natural Join
+In -> nao suporta multiplas colunas
+
+
+
+	
+	
+
+

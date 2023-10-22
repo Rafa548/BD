@@ -1,0 +1,2 @@
+Em todos os forms na funçao GetSGBDConnection
+uid e password devem ser trocados

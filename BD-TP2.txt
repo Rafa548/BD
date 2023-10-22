@@ -1,0 +1,541 @@
+cap 7 (views) 
+
+nao existe uma armazenamento fisico dos dados
+
+podem ser utilizadas como fonte de dados de operaçoes podendo ser executadas de duas formas
+	query modification (tranformaçao da query definida na original)
+	view materialization (criaçao de tabela temporaria com resultado da view)
+
+é possivel atualizar as tabelas representadas com uma view, com as restriçoes
+	-só pode incluir uma tabela
+	-tem de incluir a primary key e todos os atributos not null
+	-nao pode agrupar atributos ao usar funçoes de agragaçao
+
+ao atualizar dados usa-se a clausula where para validar os dados
+
+cap 8 (normalizaçao)
+
+objetivos | preservaçao da informaçao capturada pelo desenho conceptual /minimizar inconsistencias / redundancia de dados
+
+esquemas de relaçao - criterios informais
+				->clareza da semantica (evitar repetir de forma desnecessaria as coisas)
+				->redundancia de informaçao no tuplo (parecido ao anterior basicamente tentar separar bem as relaçoes para reduzir o espaço utilizado)
+				->reduçao de nulls (quando alguns atributos forem apenas de uma minoria devemos considerar criar uma nova relaçao para eles)
+				->junçao de relaçoes apenas com base em primary keys e foreign keys (pode dazr confusao caso contrario) 
+		      criterios formais
+				->Dependencias Funcionais (A->B (A depende de B))
+					->Parcial (atributo depende de parte dos atributos chave da relaçao)
+					->Transitiva (atributo que nao faz parte da chave depende de outro que nao faz parte da chave)
+					->Total (atributo depende de toda a chave da relaçao )
+		      processo de normalizaçao
+
+Codd propos as 3 primeiras cada uma das proximas tem como requesito a/as anteriores
+
+Boyce e Codd proposeram mais tarde a BCNF
+
+1 Forma
+
+Remover atributos multivalor e relaçoes (atributo multivalor é simples (relaçoes é ter na tabela de uma empregado o seu ssn e nome que o identificam a si e o pnumber e as hours que fazem parte do projeto) nestas ocasioes é melhor fazer uma relaçoes diferente neste caso com o Ssn e o pnumber como primary key e as hours como atributo normal)
+
+2 Forma 
+
+Pressupoe a primeira e para alem disso nao podem existir dependencias parcias (ou seja) primary keys têm de aparecer ambas para uma atributo
+(melhor forma de fazer isto é separar as dependencias parcias e criar novas tabelas)
+
+3 Forma
+
+Nao podem existir dependencias transitivas (nao keys da relaçao a depender de outras nao keys)
+Soluçao separar em outra tabela (onde o atributo cujo outros dependiam dele passa a ser primary key)
+
+BCNF
+
+Atributos funcionalmente dependentes apenas da totalidade das chaves da relaçao
+
+
+A,C -> B
+A,C -> D
+C -> B
+
+passa a  (ou seja a com chave em conflito fica a singular numa tabela separada)
+A,C->D
+C->B
+
+4 Forma
+Rara remove dependencias multivalor
+ se existirem duas dependencias X->Y X->Z numa tabela X|Y|Z
+	deve-se separar em apenas duas relaçoes (neste caso nao se separava em Y->Z tambem)
+5 Forma
+Rara remove dependencias de junçao
+  (tudo com tudo)
+
+
+Cap 9
+
+Á medida que a quantidade de dados aumenta o tempo de procura faz o mesmo assumindo uma complexidade computacional O(n) para alem disso os dados nas tabelas nao se encontram separados
+
+indices armazenam um valor ordenado do atributo e um ponteiro para o mesmo 
+tuplos e indices sao armazenados em paginas
+
+indices single-lever ordered log2(n)
+	primary index (chave primaria 1 por tabela)
+	clustered index (atributo pode ter valores duplicados, onde atributos se encontram agrupados)
+	secondary (igual ao primary mas para as outras chaves)
+
+indices multilevel
+	logf0(n)
+	sao binary treees balanceadas (B-Trees) onde a distancia de cada no folha ate a raiz é sempre a mesma
+
+indices melhoram tempo de consulta mas prejudicam insertes deletes e updates, e gastam mais espaço
+logo é necessario encontrar equilibrio
+(o melhor é tentar encontrar indices que obriguem a carregar poucas paginas)
+
+primary keys normalmente tem indices (sql server default)
+restantes normal é procurar atributos com poucos valores repetidos
+
+ao inserir etc novos dados numa relaçao com um atributo com um indice é necessario as seguintes operaçoes
+	leitura das paginas dos tuplos
+	escrita das paginas dos yuplos com novas informaçoes
+	leitura das paginas dos indices	
+	escrita das paginas dos indices
+
+3 atores 3 filmes a relaçao ocupa 10 paginas
+
+10 4 10 4
+10 10 4 4  (melhor é ver basicamente os indices ajudam a consultar pioram a inserçao)
+2 4 4 6	
+
+Sql server tem 2 tipos de indices
+
+clustered 
+	->nos tem os dados numa estrutura 2 em 1 (indices+dados)
+	->tabela esta ordenada pelo indice, a B tree esta ordenada pelo key cluster index
+	->1 por relaçao
+non-clustered
+	-> apontam para a clustered ou heap tuplo é identificado pelo seu RowId
+	->varios por relaçao se necessario
+
+B-Tree page split
+
+ao adicionar um tuplo numa pagina cheia o sgbd divide essa pagina em duas (page split)
+	cria uma nova pagina
+	copia parte dos indices
+	reflete esta alteraçao para os nos superiores
+	insere o novo indice
+
+Indices podem ser 
+unique->default para primary keys (pode ser mudado se for desejado) 
+composite-> mais do que um atributo e a ordem importa (pode ser vantajoso varios com os mesmos atributos mas com ordens diferentes)
+filtered->ao criar pode-se usar o where desta forma apenas alguns tuplos ficam com o indice
+
+Atributos nao chave podem ser incluidos em indices non-clustered
+
+Escolha
+	clustered->chaves que nao criam page splits e chaves pequenas
+	nonclustered->onde sao feitas consultas ordenadas
+	atributos que sao chaves estrangeiras de outras relaçoes (maior desempenho em joins)
+
+Otimizaçao de B-trees
+	para minimizar o numero de page splits ao criar o index mete-se o with
+	fill factor->percentagem de espaço livre em cada page
+	pad index ->fill factor é ou nao aplicado em nos folha
+
+Tabelas heap vs clustered
+	heap simplesmente adiciona no fim da mesma,em cada folha existe um rowid
+	clustered insere os tuplos na respetiva b-tree consoate a clustered key index e podem ocorrer page splots
+
+deve-se encontrar equilibrio entre desperdicio de espaço e frequencia de page splits
+	se as inserçoes forem ordenadas o fill factor deve ser proximo de 100%, inserçoes sem ordem 65-85%
+
+Desfragmentaçao deve ser feita regularmente
+	pode ser feita com o alter
+		Reorganize (simplesmente desfragmenta as folhas )
+		ou Rebuild (este refaz todos os indices da tabela e da para mudar as caracteristicas dos mesmos)
+	
+Cap 10
+
+Batch
+
+Bloco de uma ou mais instruçoes delimitado pelo terminador GO (nao pode ter ; no final)
+Terminada a sua execuçao variaveis locais, tabelas temporarias e cursores sao eliminados
+
+Compilação
+
+Instruçoes sao compiladas antes da execuçao logo nada é executado se houverem erros de compilaçao apenas podem existir erros de runtime erros que só sao detetados durante a execuçao por isso nao anulao as instruçoes executadas anteriormente
+
+Contexto
+
+Mudar base de dados Use <dbName>
+
+Variaveis
+
+Declare @<vname> <type> [= <value>];
+Set <@varname> = <value>;
+
+se ao declarar nao dor dado nenhum valor o mesmo assume null
+
+podem ser usadas operaçoes aritmeticas (+,-,*)
+Set @<varname> <op> = <number> Select @<varname>;
+
+Utilza-se com recurso ao select
+
+Select @varname;
+
+Pode dar-se valores de consultas (caso tenha mais que um tuplo fica com o valor do ultimo)
+Select @varname= attrb From table1 where id = 1;
+
+Podendo de seguida serem utilizadas nas consultas das tabelas
+Select * From table Where attrb = @varname;
+
+Ter cuidado com o scope da bash !!!!!!!!!!!
+
+Output 
+
+Para dar print de coisas na tabela pode-se usar o comando print
+
+
+Instruçoes de controlo de fluxo
+
+Isto deve ser usado se as instruçoes a realizar sao mais que uma
+
+Begin
+	(Bloco de instruçoes)
+End
+
+Instruçoes condicionais
+
+IF <bollean>
+
+Else (opcional)
+
+Ciclos
+While <Bollean>
+
+Alternativa (fazer dps !!!!!!!!!!!!!!!!)
+
+
+Tabelas temporarias (igual ás outras tirando a sua persistencia que é limitada)
+
+Dois tipos
+	Locais (possivel de ver apenas na secçao e inner levels em que sao criadas (proximas tabelas chamadas pela query que a cria)) nome tem antes um # (eliminadas quando o procedimento ou funçao termina ou usando o drop)
+	Globais (iguais á outra mas é visivel para tudo) nome tem antes um ## (eliminadas quando a ultima sessao disconecta ou dando drop) em alternativa pode-se craiar a tabela na BD tempdb diretamente essa tabela é eliminada sempre que o sql server reinicia
+
+Tabelas como variaveis (semelhantes a tabelas locais mas nao podem ser passadas a inner levels) 
+Podem ser passadas como parametros
+Continuam a ser definidas na tempdb
+
+Restriçoes
+Só sao permitidas chaves primarias defaults nulls e unique
+Nao sao permitidos objetos dependentes tais como chaves estrangeiras e triggers
+
+
+Script (ficheiro com .sql no fim com uma ou mais batches)
+
+Cursor (Ferramenta server side que permite percorrer sequencialmente os tuplos retornados por uma operaçao de consulta)
+
+Declaraçao
+Declare Cursor cursor_name for Select ...M
+
+Abrir cursor
+open cursor_name;
+
+Avançar para a proxima linha etc..
+Fetch (direction) cursor_name into (...)
+
+Fechar cursor
+Close cursor_name
+
+Dealocar memoria 
+Deallocate cursor_name
+
+Existe a funçao @@fetch_status para analisar o estado do cursor 0-OK, -1-Fim dos registo , -2:Tuplo nao disponivel
+
+Opçoes
+Static (maior velocidade)
+	cursor opera sobre uma copia na BD na tempdb qualquer mudificaçao é feita na tabela temporaria e nao é propagado para a tabela original
+Keyset
+	cria uma relaçao na tempDb com os atributos necessarioa para identificar os tuplos 
+Dynamic
+	Itera sobre a relaçao original alteraçoes sao a mesma coisa
+Fast Forward (meior performance)
+	readonly
+
+Ar - a alternativa
+set based query assentes em algebra (mais complexo de desenhar) mais rapidos de executar
+
+Cursores é pescar com uma linha de pesca based querys é pescar com uma rede de pesca
+
+Cursores continuam a ser a escolha quando 
+	para cada tuplo é necessario fazer um procedimento
+	soma cumulativas
+	relacionar um tuplo com o seu vizinho
+
+Stored procedures (fica guardado em chache dps da primeira execuçao) batch armazenada com um nome
+	Extensabilidade (abstraçao da base de dados para extensabilidade futura)
+	Performance (sql server code mais rapido)
+	Usabilidade (mais simples do que fazer sempre á mao)
+	Integridade (mais dificil de encontrar erros de integridade)
+	Segurança (acedde-se a tabelas apenas pelas mesmas)
+
+Create Proc procname (variaveis se quiser aqui como inputs de uma funçao)
+As
+	....
+	....
+GO
+
+Alter (nunca usei)
+
+Go
+
+Drop Proc procname
+
+Tipos (System (sp_ no incio do nome) e local) 
+
+Execuçao 
+
+usa-se Exec procname (parametros de entrada)
+se nos parametros de entrada se fornecer os nomes das variaveis nao é necessario preocupar-se com a ordem
+
+
+T-SQL Error Handling
+
+@@erroe inteiro com codigo e erro da ultima instruçao se for 0 nao existe erro
+
+@@rowcount numero de tuplos afetados pela instruçao
+
+T-SQL RaiseError
+
+Raiserror errornumber errormessage;
+
+Existe Try catch
+Begin TRY
+	codigo;
+End Try
+Begin Catch
+	lidar com erro;
+End catch
+
+Finalmente é possivel encriptar Stored Procedures 
+usando With encryption
+
+UDFs (Mesmos beneficios das Stored procedures) permitem implementar logica complexa em consultas
+(tambem se relacionam com as vistas pelo q podem ser usadas como fontes e dados mas com o extra de aceitar parametros)
+
+Escalar (retorna um unico valor) 
+deterministicas , ou seja, para os mesmos valores de entrada devvem reotrnar os mesmos valores
+nao fazem updates
+nao permite try catch ou raise error
+recursividade maxima de 32 niveis
+
+Inline Table-valued
+é uma view com a vantagens de ter parametros de entrada ou seja retorna uma tabela de tuplos que coincidem com o uso daqueles parametros
+
+Multi-statement Table-Valued
+combina as duas anteriores
+
+
+Triggers
+Executar determinadas operaçoes quando ocorrem açoes previstas 
+
+2 Tipos 
+
+Instead of (Trigger é executado inves da operaçao que o chamou) normalmente usado quando a açao tem uma grande probabilidade de ser permitida
+	permite contornar problemas de integridade referencial mas nao de nulidade
+	nao é recursivo
+	desta forma compete ao trigger fazer a operaçao se a considerar valida
+	ou nao a fazer e dar erro
+	apenas um por tabela
+After (trigger é executado depois de a opreaçao ser concluida mas antes do commit da transaçao do dml) 
+	desta forma no trigger se foram inseridas coisas incorretamente o mesmo pode fazer roolback e dar o respetivo erro
+	assume-se que os dados passaram as verificaçoes de integridade
+	nao pode corrigir eventuais problemas nos dados
+	podem existir varios por tabela de forma a assegurar integridade referencial
+
+Nos triggers nao sao permitidas as seguintes operaçoes
+
+Create,drop, alter database
+reconfigure
+restore database or log
+disk resize
+disk init
+
+Tabelas logicas
+
+O sql server permite ter acesso a duas tabelas logicas com uma imagem read-only dos dados alterados
+	Inserted e Deleted
+	(dados inseridos e apagados )
+é importante saber que o scope destas tabelas é muito limitado as stored procedures invocadas por uma trigger nao têm acesso a essas tabelas
+
+Trigger Colunas alteradas
+update(columnname)
+retorna true se a coluna foi alterada
+columns_updated()
+mapa de bits com todas as tabelas se uma coluna foi alterada o seu bit esta a true
+
+
+Cap 11
+
+Um sgbd age como intermediario entre o cliente e a base de dados (podem existir varios clientes ao mesmo tempo)
+o mesmo tem duas operaçoes principais (tipos)
+
+read (vai buscar á BD e mete em memoria)
+write (vai buscar á memoria e mete na BD)
+
+Exemplo:Para transferir 50€ entre duas contas, há que ler o saldo da primeira, subtrair 50 e escrever o novo valor e o mesmo na segunda, mas desta vez somando.
+
+Transaçoes
+Estados
+
+Active (execuçao)
+Partially commited (apos acabar a ultima operaçao) vai para commited se a atulizaçao for possivel para failed se der algum erro 
+Commited (mudanças concludas na base de dados)
+Failed (algum tipo de erro)
+Aborted (depois do rollback e a BD voltar ao estado anterior)
+Concluded
+
+Propritedades
+ACID
+
+Atomacidade (todas ou nenhuma (instruçoes concluidas com exito (ou passam todas ou se falhar alguma é falha)) )
+Consistencia (integridade sempre mantida)
+Isolamento (nao existe conflito entre transaçoes)
+Durabilidade (se forem concluidas com exito sao permanentes e visiveis)
+
+Controlo de Concorrencias
+
+Para garantir a integridade da base de daos é necessario implementar escalonamentos
+Escalonamento Serializado-> uma instruçao de cada vez de forma sequencial (pouco eficiente (recursos nao sao aproveitados em pleno e os tempos de espera podem ser elevados))
+Escalonamento concorrente seralizado-> permite execuçao concorrente das transaçoes mas de forma a perservar o isolamento
+
+Cenarios de erro 
+Este escalonamento nao é facil de manter havendo assim dois cenarios de erro possiveis
+	Estes ocorrem quando operaçoes de transaçoes diferentes acedem ao mesmo elemento ao qual é feito pelo menos uma operaçao de escrita
+
+Atualizaçao perdida->uma transaçao atualiza uma valor logo a seguir da outra (não é tido em conta o valor atualizado pela primeira (pensar em se as transaçoes fossem aumentar o valor em 1 neste caso o valor final era 1 na mesma inves de ser 2))
+
+Leitura suja->ocorre quando uma transaçao lÊ um valor atulizado por outra que ainda nao foi commited isto viola a integridade da BD porque esse mesmo valor pode ser cancelado e o valor lido pela primeira vai estar incorreto
+
+Escalonamento
+Devido a esses erros é necessario recorrer a escalonadores (estes definem a ordem de execuaçao intercalada das operaçoes de varias transaçoes)
+atravez de um de varios mecanismos
+	estes podem ser
+	preventivos (evitam a execuçao de transaçoes q possam gerar conflito)
+	otimistas (permite tudo e em caso de erro faz rollback e reboot)
+
+Dentro dos preventidos destacam-se dois
+	mecanismos de locking->semaforo (é importante ter cuidado com deadlocks)
+	mecanismos de etiquetagem->atribui-se uma etiqueta incremental a cada transaçao com a qual marca todos os elementos a q a acede, se uma transaçao tentar aceder a um elemeto com uma etiqueta maior que a sua, é cancelada e reiniciada
+
+Recuperaçao de falhas
+
+Objetivo é a recuperaçao do estado da bd mais proximo do momento em que a falha ocorreu
+
+falha de uma transaçao a soluçao é o escalonamento
+
+Mas quando é mais grave e existe perda parcial ou total da base de dados apenas backups e log de transaçoes podem responder
+
+Escalonamento
+
+Um escalonamento diz-se recuperavel quando nenhuma transaçao for commited ate q todas as outras que escrevem elementos por ela tenham sido concluidas (isto pode dar origem a uma situçao irrecuperavel se uma leitura por feita depois de uma escrita de uma transaçao que ainda nao foi commited se a escrita for concluida ela ainda pode ser cancelada)
+
+Mesmo sendo recuperavel o ideal é nao existirem aborts em cascata, ou seja, uma transaçao só pode ler elementos atualizados por transaçoes ja concluidas (no exemplo anterior caso a primeira seja abortada a segunda tambem o seria uma vez que tinha lido im elemento escrito pela anterior, o ideal seria a segunda ser executada apenas quando a primeira ja tiver sido concluida commited)
+
+Finalmente é importante que o escalonamento seja estrito, ou seja uma transaçao só pode ler ou atualizar elementos atualizados por transaçoes ja concluidas
+
+Backups
+
+copias de segurança efetuadas periodicamente sobre os dados da bd desta forma sao criados pontos de recuperaçao para cnarios de eeros graves no sistema
+deve existir um compromisso entre a regularidade dos backups e a necessidade de manter copias atualizadas por os mesmos serem caros/exigentes mas se forem demasiado espaçados os dados nao vao estar representados corretamente
+
+Transaction Logs
+
+o sistema guarda ambos o antes e o depois de transaçoes que realizaram operaçoes de forma sequencial 
+armazenados de forma repartida entre memoria e disco
+
+normalmente usados para fazer rollback e rollforward
+
+Fluxo de Operaçoes
+
+1-operaçoes armazenadas em log em memoria
+2-quando é dado o commit os dados do log sao atualizados em disco
+3-os dados da bd sao escritos em disco
+
+existem varias falhas é importante ter em conta que todas tÊm custos associados, porque obrigam a um maior numero de acessos ao disco para dar update ao ficheiros de recuperaçao, estes tambem ocupam mais espaço e o cpu é sobrecarregado com as operaçoes de manutençao
+
+Falha da transaçao
+ 
+acontecendo basta fazer rollback
+
+Falha de disco
+
+necessario recontruir a base de dados
+
+consiste em dar rollforward do bakcup ate o log mais recente
+
+Falha do sistema
+
+se o SO ou o SGBD tiver falhas considera-se que a base de dados esta corrompida deve-se entao dar rollback ate um ponto de integridade conhecido (isto pode ser complexo por nem sempre se saber onde se encontra o ponto confiavel)
+
+Rollback
+
+deve ser feito ate ao ponto em que os registos de log e a BD estao sincronizados
+
+pode ser feito atraves do restauro de um backup
+
+ou criar check points (marcas no log que identificam os memomentos em que os buffers sao escritos no disco)
+
+SQL ----
+
+em sql um comando individual é considerado uma transaçao
+
+Begin tran tran_name
+
+commit tran tran_name
+
+rollback tran tran_name
+
+se a transaction falhar é dado um rollback implicito
+
+é possivel criar save points 
+
+com o comando save transction save_name
+
+e depois usar rollback transaction save_name para voltar a esse ponto
+
+Isolamento
+
+Serializable  (isolamento completo)
+
+repeatable read (so le dados commit e outras transaçoes nao podem mudar dados lidos por si)
+
+read commited (le dados depois de serem commited) default
+
+read uncommited (le dados que ainda nao foram commited)
+
+snapshot (ve os dados antes de iniciar a transaçao nao ve os dados depois de commited)
+
+É possivel ter transaçoes encadeadas
+
+Gestao de erros em transaçoes 
+
+XACT_ABORT estando off faz com que as operaçoes antes de dar algum erro nao sejam desfeitas o valor default é on
+
+em alternativa podemos usar um try catch
+
+Sql
+
+tem users que podem ser dados roles e permissoes
+
+em objetos tem-se o tipo de permissao precedido por Grant Deny Revoke (grant é o oposto de deny) revoke remove qualquer um dos 2
+
+Sql injection
+
+Consiste em inserir comandos sql no sistema atraves de uma aplicaçao
+
+Como prevenir
+
+Devemos validar toda a entrada de dados e utilizar processos de hash/codificaçao
+
+
+
+
+

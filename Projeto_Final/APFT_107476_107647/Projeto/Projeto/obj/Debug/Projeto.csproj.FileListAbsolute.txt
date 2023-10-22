@@ -1,0 +1,119 @@
+C:\Users\rafae\source\repos\Projeto\Projeto\bin\Debug\Projeto.exe.config
+C:\Users\rafae\source\repos\Projeto\Projeto\bin\Debug\Projeto.exe
+C:\Users\rafae\source\repos\Projeto\Projeto\bin\Debug\Projeto.pdb
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.csproj.AssemblyReference.cache
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.csproj.SuggestedBindingRedirects.cache
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Form1.resources
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Properties.Resources.resources
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.csproj.GenerateResource.cache
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.csproj.CoreCompileInputs.cache
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.exe
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.pdb
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Form2.resources
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Form4.resources
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Form5.resources
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Form6.resources
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Form7.resources
+C:\Users\rafae\source\repos\Projeto\Projeto\obj\Debug\Projeto.Form3.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\bin\Debug\Projeto.exe.config
+C:\Users\helde\Downloads\P\Projeto\Projeto\bin\Debug\Projeto.exe
+C:\Users\helde\Downloads\P\Projeto\Projeto\bin\Debug\Projeto.pdb
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.csproj.AssemblyReference.cache
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.csproj.SuggestedBindingRedirects.cache
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Form1.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Form2.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Form3.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Form4.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Form5.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Form6.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Form7.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.Properties.Resources.resources
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.csproj.GenerateResource.cache
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.csproj.CoreCompileInputs.cache
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.exe
+C:\Users\helde\Downloads\P\Projeto\Projeto\obj\Debug\Projeto.pdb
+C:\Users\rafae\Desktop\P\Projeto\Projeto\bin\Debug\Projeto.exe.config
+C:\Users\rafae\Desktop\P\Projeto\Projeto\bin\Debug\Projeto.exe
+C:\Users\rafae\Desktop\P\Projeto\Projeto\bin\Debug\Projeto.pdb
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.csproj.AssemblyReference.cache
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.csproj.SuggestedBindingRedirects.cache
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Form1.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Form2.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Form3.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Form4.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Form5.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Form6.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Form7.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.Properties.Resources.resources
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.csproj.GenerateResource.cache
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.csproj.CoreCompileInputs.cache
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.exe
+C:\Users\rafae\Desktop\P\Projeto\Projeto\obj\Debug\Projeto.pdb
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.exe.config
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.exe
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.pdb
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.AssemblyReference.cache
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.SuggestedBindingRedirects.cache
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form1.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form2.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form3.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form4.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form5.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form6.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form7.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Properties.Resources.resources
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.GenerateResource.cache
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.CoreCompileInputs.cache
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.exe
+C:\Users\helde\Downloads\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.pdb
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.exe.config
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.exe
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.pdb
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.AssemblyReference.cache
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.SuggestedBindingRedirects.cache
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form1.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form2.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form3.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form4.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form5.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form6.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form7.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Properties.Resources.resources
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.GenerateResource.cache
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.CoreCompileInputs.cache
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.exe
+C:\Users\rafae\Desktop\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.pdb
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.exe.config
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.exe
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\bin\Debug\Projeto.pdb
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.AssemblyReference.cache
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.SuggestedBindingRedirects.cache
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form1.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form2.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form3.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form4.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form5.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form6.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Form7.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.Properties.Resources.resources
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.GenerateResource.cache
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.csproj.CoreCompileInputs.cache
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.exe
+C:\Users\helde\Downloads\P_3\P_3\P (1)\P\Projeto\Projeto\obj\Debug\Projeto.pdb
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\bin\Debug\Projeto.exe.config
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\bin\Debug\Projeto.exe
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\bin\Debug\Projeto.pdb
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.csproj.AssemblyReference.cache
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.csproj.SuggestedBindingRedirects.cache
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Form1.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Form2.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Form3.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Form4.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Form5.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Form6.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Form7.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.Properties.Resources.resources
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.csproj.GenerateResource.cache
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.csproj.CoreCompileInputs.cache
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.exe
+C:\Users\rafae\Desktop\APFT_107476_107647\Projeto\Projeto\obj\Debug\Projeto.pdb

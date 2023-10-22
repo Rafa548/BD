@@ -1,0 +1,11 @@
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\bin\Debug\Contacts.exe.config
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\bin\Debug\Contacts.exe
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\bin\Debug\Contacts.pdb
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.csproj.AssemblyReference.cache
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.csproj.SuggestedBindingRedirects.cache
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.Form1.resources
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.Properties.Resources.resources
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.csproj.GenerateResource.cache
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.csproj.CoreCompileInputs.cache
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.exe
+C:\Users\rafae\OneDrive\Documentos\Uni-Cadeiras\2-ano\2-semestre\BD\A7\ContactsC#\Contacts\obj\x86\Debug\Contacts.pdb
